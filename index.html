@@ -3,8 +3,135 @@
 <head>
 	<meta charset="utf-8">
 	<title>weather</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet"href="css/style.css">
 </head>
 <body>
-hello.
+
+<header>
+
+	<nav class="topNav">
+		<!-- <div class="navBtn selected">National</div> -->
+
+		<div class="row">
+			<select id="stateSelect">
+				<!-- <option hidden selected value="clear">National / State / Region</option> -->
+				<option value="AUS" id="clearStateSelection">National</option>
+				<option value="region">Region</option>
+				<option value="QLD">Queensland</option>
+				<option value="NSWACT">NSW / ACT</option>
+				<!-- <option value="NSW">New South Wales</option> -->
+				<!-- <option value="ACT">ACT</option> -->
+				<option value="VIC">Victoria</option>
+				<option value="TAS">Tasmania</option>
+				<option value="SA">South Australia</option>
+				<option value="WA">Western Australia</option>
+				<option value="NT">Northern Territory</option>
+			</select>
+
+			<div class="tense">
+				<div class="tenseNav prev"><</div>
+				<span class="tenseText">Now</span>
+				<div class="tenseNav next active">></div>
+			</div>
+
+<!-- 			<div class="searchContainer">
+				<input type="text" placeholder="Search" name="search">
+			</div> -->
+		</div>
+
+<!-- 		<div class="row">
+			<div class="subhead">Observations</div>
+			<div class="tense">
+				<div class="tenseNav prev"><</div>
+				<span class="tenseText">Now</span>
+				<div class="tenseNav next active">></div>
+			</div>
+		</div> -->
+
+	</nav>
+</header>
+
+<main>
+	<div class="homeLocality">
+		<!-- <div class="conditions local">Pittsworth</div> -->
+		<div class="conditions local">
+			<div class="observation">
+
+				<div class="icon">
+					<img src="icons/01-s.png">
+				</div>
+
+				<div class="summary">
+					<div class="localityName">Pittsworth</div>
+					<div class="description">Mostly Cloudy</div>
+					<div class="time">16:42</div>
+				</div>
+
+				<div class="temperature">23&deg;</div>				
+			</div>
+
+			<div class="forecast">
+				<div class="range">
+					<div class="hi">31&deg;</div>
+					<div class="lo">16&deg;</div>
+				</div>
+
+				<div class="summary">
+					<div class="description">Expect showers Tuesday morning</div>
+					
+					<div class="row">
+						<div class="precip">Rain:&nbsp;<b>15%</b></div>
+						<div class="wind">Wind:&nbsp;<b>WNW 21 km/h</b></div>
+					</div>
+
+					<div class="row">
+						<div class="wind">UV:&nbsp;<b>Moderate</b></div>
+						<div class="wind">Air Quality:&nbsp;<b>Good</b></div>
+					</div>
+					
+				</div>
+
+				<div class="icon">
+					<img src="icons/01-s.png">
+				</div>
+
+				<div class="expand">+</div>
+			</div>
+		</div>
+		<div class="mapBox"></div>
+		<div class="prompt">scroll down</div>
+	</div>
+	<div class="localities active national">
+		<div class="conditions">Brisbane</div>
+		<div class="conditions">Sydney</div>
+		<div class="conditions">Canberra</div>
+		<div class="conditions">Melbourne</div>
+		<div class="conditions">Hobart</div>
+		<div class="conditions">Adelaide</div>
+		<div class="conditions">Perth</div>
+		<div class="conditions">Darwin</div>
+	</div>
+
+	<div class="localities hidden"></div>
+
+</main>
+
+<footer>
+	<nav>
+		<div class="navBtn selected">Summaries</div>
+		<div class="navBtn">Rain & Water</div>
+		<div class="navBtn">Analysis</div>
+		<div class="navBtn">World</div>
+	</nav>
+</footer>
+<script src="script/index.js"></script>
 </body>
 </html>
