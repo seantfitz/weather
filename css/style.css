@@ -18,6 +18,8 @@ header{
 	height: 40px;
 	/*height: 80px;*/
 	/*background-color: #f00;*/
+	border: solid 1px #7f7f7f;
+	box-sizing: border-box;
 }
 nav{
 	position: absolute;	
@@ -80,7 +82,7 @@ header nav select{
 }
 
 main{
-	background-color: #0f0;
+	/*background-color: #0f0;*/
 	/*flex-grow: 1;*/
 	overflow-y: auto;
 
@@ -90,6 +92,10 @@ main{
 	right: 0px;
 	bottom: 40px;
 	left: 0px;
+
+	border-right: solid 1px #7f7f7f;
+	border-left: solid 1px #7f7f7f;
+	box-sizing: border-box;
 }
 
 footer{
@@ -98,7 +104,7 @@ footer{
 	width: 100%;
 	height: 40px;
 	bottom: 0px;
-	background-color: #00f;
+	/*background-color: #00f;*/
 }
 
 .navBtn{
@@ -109,9 +115,8 @@ footer{
 	align-items: center;
 	justify-content: center;
 	
-/*	border: solid 1px #7f7f7f;
-	border: solid 1px rgba(0,0,0,0.5);
-	box-sizing: border-box;*/
+	border: solid 1px #7f7f7f;
+	box-sizing: border-box;
 
 	/*margin: 0 2px;*/
 
@@ -134,15 +139,17 @@ footer nav .navBtn{
 	height: 60px;
 	/*height: 90px;*/
 	/*height: 120px;*/
-	background-color: #fc0;
+	/*background-color: #fc0;*/
 
-/*	border: solid 1px #7f7f7f;
-	border: solid 1px rgba(0,0,0,0.5);
-	box-sizing: border-box;*/
+	border-bottom: solid 1px #7f7f7f;
+	/*border: solid 1px rgba(0,0,0,0.5);*/
+	box-sizing: border-box;
 
 	/*margin: 2px 0;*/
 
 	display: flex;
+
+	background-color: #fff;
 }
 .observation, .forecast{
 	display: flex;
@@ -151,7 +158,9 @@ footer nav .navBtn{
 
 .conditions .observation{
 	width: 40%;
-	background-color: #77f;
+	/*background-color: #77f;*/
+	border-right: solid 1px #7f7f7f;
+	box-sizing: border-box;
 }
 /*.conditions .observation .summary div{*/
 .conditions .observation div{
@@ -230,7 +239,7 @@ footer nav .navBtn{
 }
 
 .localities .conditions:nth-child(odd){
-	background-color: #ff0;
+	background-color: #eee;
 }
 .homeLocality{
 	height: 100%;
@@ -248,7 +257,12 @@ footer nav .navBtn{
 	/*height: 100%;*/
 	flex-grow: 1;
 
-	background-color: #f0f;
+	/*background-color: #f0f;*/
+
+	background-image: url(../images/aus.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 .prompt{
 	width: 100%;
