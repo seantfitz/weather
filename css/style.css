@@ -36,7 +36,8 @@ header nav select{
 	background-color: #1f1f1f;
 	color: #fff;
 	text-align: center;
-	min-width: 25%;
+	/*min-width: 25%;*/
+	min-width: 40%;
 }
 .topNav{
 	flex-direction: column;
@@ -169,7 +170,8 @@ footer nav .navBtn{
 	justify-content: center;
 }
 .conditions .observation .icon, .conditions .observation .temperature{
-	width: 75px;
+	/*width: 75px;*/
+	width: 80px;
 }
 .conditions .observation .summary .localityName{
 	font-weight: bold;
@@ -178,7 +180,8 @@ footer nav .navBtn{
 	font-size: 0.8em;
 }
 .conditions .observation .temperature{
-	font-size: 2em;
+	/*font-size: 2em;*/
+	font-size: 1.6em;
 	font-weight: bold;
 }
 .conditions .observation .summary{
