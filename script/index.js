@@ -161,13 +161,24 @@ const stateSelect = (e)=>{
 	selectedRegion = v
 
 	switch(v){
-		case 'AUS': appendNational(); break;
-		case 'region': appendZone('QLD',2); break;
+		case 'AUS': appendNational();
+		$('.mapBox, .prompt').removeClass('hidden');
+		$('.homeLocality').css('height','100%');
+		break;
+		
+		case 'region': appendZone('QLD',2);
+		$('.mapBox, .prompt').addClass('hidden');
+		$('.homeLocality').css('height','auto');
+		break;
 
 		default: appendAdmin(v)
+		$('.mapBox, .prompt').removeClass('hidden');
+		$('.homeLocality').css('height','100%');
 	}
 
 	$('.mapBox').css('background-image',`url(images/${v}.jpg)`)
+
+	$('main').scrollTop(0)
 }
 
 
@@ -237,7 +248,8 @@ const appendNational = ()=>{
 	let keys = Object.keys(list)
 
 	$('.localities .conditions').remove()
-	loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+	// loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+	loc_keys = [pinnedKey]
 
 	for(let i of keys){
 
@@ -256,7 +268,8 @@ const appendAdmin = (admin)=>{
 	let keys = list[admin]['zones'][0]
 
 	$('.localities .conditions').remove()
-	loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+	// loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+	loc_keys = [pinnedKey]
 
 	for(let loc of keys){
 
@@ -273,14 +286,17 @@ const appendZone = (admin,n)=>{
 	// console.log(keys)
 
 	$('.localities .conditions').remove()
-	loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+	// loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+	loc_keys = [pinnedKey]
 
 	for(let loc of keys){
 
 		let Key = list[admin]['localities'][loc]['Key']
 		loc_keys.push(Key)
 
-		appendBlock(admin,loc,Key)
+		if(Key != pinnedKey){
+			appendBlock(admin,loc,Key)
+		}
 	}
 }
 
@@ -300,11 +316,16 @@ const getList = async () => {
 	const res = await fetch('script/AU.json')
 	window['list'] = await res.json()
 
+	window['pinnedKey'] = list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']
+
 	// console.log(list)
 	// console.log(list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key'])
 	
-	getCurrent(pinnedLocality[0],list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key'])
-	getForecast5day(pinnedLocality[0],list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key'],0)
+	// getCurrent(pinnedLocality[0],list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key'])
+	// getForecast5day(pinnedLocality[0],list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key'],0)
+
+	getCurrent(pinnedLocality[0],pinnedKey)
+	getForecast5day(pinnedLocality[0],pinnedKey,day)
 	
 	appendNational()
 	// appendAdmin('QLD')
