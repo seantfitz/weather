@@ -26,11 +26,6 @@ let days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
 let today = new Date()
-// today.setDate(today.getDate() + 1);
-// console.log(days[today.getDay()])
-// console.log(months[today.getMonth()])
-// console.log(today.getDate())
-
 
 let pinnedLocality = ['QLD','Pittsworth']
 let selectedRegion = 'AUS'
@@ -74,11 +69,9 @@ const tenseNav = (e)=>{
 }
 $('.tenseNav').click(tenseNav)
 
-const getCurrent = async(admin,Key)=>{
-	
-	let res = await fetch(`script/current/${Key}.json`)
-	let data = await res.json()
+const populateCurrent = (Key)=>{
 
+	let data = window[`current_${Key}`]
 	/*summaries*/	
 	let WeatherIcon = data[0]['WeatherIcon'];if(WeatherIcon < 10){WeatherIcon = '0' + WeatherIcon}
 	$(`.observation.k_${Key} .icon`).html(`<img src="icons/${WeatherIcon}-s.png">`)
@@ -88,16 +81,17 @@ const getCurrent = async(admin,Key)=>{
 	/*summaries*/
 }
 
+const getCurrent = async(admin,Key)=>{	
+	let res = await fetch(`script/current/${Key}.json`)
+	window[`current_${Key}`] = await res.json()
+	populateCurrent(Key)
+}
+
 const populateForecast = (Key,n)=>{
-	// console.log(Key)
-	// today.setDate(today.getDate() + n);
 	$('.tenseText').html(`${days[today.getDay()]}&nbsp;${months[today.getMonth()]}&nbsp;${today.getDate()}`)
 
-
-
 	let data = window[`forecast_${Key}`]
-// console.log(data['DailyForecasts'][n]["EpochDate"])
-// console.log(new Date(data['DailyForecasts'][n]["EpochDate"]))
+
 	/*summaries*/
 	let WeatherIcon = data['DailyForecasts'][n]['Day']['Icon'];if(WeatherIcon < 10){WeatherIcon = '0' + WeatherIcon}
 	$(`.forecast.k_${Key} .icon`).html(`<img src="icons/${WeatherIcon}-s.png">`)
@@ -120,40 +114,15 @@ const populateForecast = (Key,n)=>{
 	$(`.forecast.k_${Key} .summary .uv`).html(`UV:&nbsp;${data['DailyForecasts'][n]['AirAndPollen'][5]['Category']}`)
 	$(`.forecast.k_${Key} .summary .air`).html(`Air Quality:&nbsp;${data['DailyForecasts'][n]['AirAndPollen'][n]['Category']}`)
 	/*summaries*/
+
+	$(`.forecast.k_${Key} .expand`).attr('name',`k_${Key}`)
 }
 
 
 const getForecast5day = async(admin,Key,n)=>{
-	
 	let res = await fetch(`script/forecast5day/${Key}.json`)
-	// let data = await res.json()
-	// console.log(data['DailyForecasts'])
 	window[`forecast_${Key}`] = await res.json()
-
 	populateForecast(Key,n)
-
-	/*summaries*/
-	// let WeatherIcon = data['DailyForecasts'][n]['Day']['Icon'];if(WeatherIcon < 10){WeatherIcon = '0' + WeatherIcon}
-	// $(`.forecast.k_${Key} .icon`).html(`<img src="icons/${WeatherIcon}-s.png">`)
-
-	// $(`.forecast.k_${Key} .hi`).html(`${data['DailyForecasts'][n]['Temperature']['Maximum']['Value']}&deg;`)
-	// $(`.forecast.k_${Key} .lo`).html(`${data['DailyForecasts'][n]['Temperature']['Minimum']['Value']}&deg;`)
-	
-	// // $(`.forecast.k_${Key} .summary .description`).html(data['DailyForecasts'][n]['Day']['ShortPhrase'])
-	// $(`.forecast.k_${Key} .summary .description`).html(data['DailyForecasts'][n]['Day']['IconPhrase'])
-	
-	// $(`.forecast.k_${Key} .summary .precip`).html(`Rain:&nbsp;${data['DailyForecasts'][n]['Day']['RainProbability']}%`)
-	
-	// $(`.forecast.k_${Key} .summary .wind`).html(`
-	// 	Wind:&nbsp;
-	// 	${data['DailyForecasts'][n]['Day']['Wind']['Direction']['Localized']}&nbsp;
-	// 	${data['DailyForecasts'][n]['Day']['Wind']['Speed']['Value']}&nbsp;
-	// 	${data['DailyForecasts'][n]['Day']['Wind']['Speed']['Unit']}
-	// `)
-
-	// $(`.forecast.k_${Key} .summary .uv`).html(`UV:&nbsp;${data['DailyForecasts'][n]['AirAndPollen'][5]['Category']}`)
-	// $(`.forecast.k_${Key} .summary .air`).html(`Air Quality:&nbsp;${data['DailyForecasts'][n]['AirAndPollen'][n]['Category']}`)
-	/*summaries*/
 }
 
 const stateSelect = (e)=>{
@@ -182,11 +151,23 @@ const stateSelect = (e)=>{
 }
 
 
+const expand = (e)=>{
+	// console.log(e.target)
+	// console.log(e.target.getAttribute('name'))
+	let Key = e.target.getAttribute('name').replace(/k_/g,'')
 
+	console.log(Key)
+
+	// $(`.k_${Key}`).css('height','100%')
+
+
+	console.log(window[`current_${Key}`])
+	console.log(window[`forecast_${Key}`])
+}
 
 const appendBlock = (admin,loc,Key)=>{
 	$('.localities').append(`
-		<div class="conditions">
+		<div class="conditions k_${Key}">
 			<div class="observation k_${Key}">
 
 				<div class="icon"></div>
@@ -229,6 +210,9 @@ const appendBlock = (admin,loc,Key)=>{
 		</div>
 	`)
 
+	// $('.conditions .expand').click(expand)
+	// $(`.expand.k_${Key}`).click(expand)
+
 	getCurrent(admin,Key)
 	getForecast5day(admin,Key,day)
 }
@@ -237,18 +221,10 @@ const appendBlock = (admin,loc,Key)=>{
 
 const appendNational = ()=>{
 
-	// let pinS = pinnedLocality[0]
-	// let pinL = pinnedLocality[1]
-	// let pinK = list[pinS]['localities'][pinL]['Key']
-
-	// console.log(pinS,pinL,pinK)
-
-	//////////////////////////////
-
 	let keys = Object.keys(list)
 
 	$('.localities .conditions').remove()
-	// loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+
 	loc_keys = [pinnedKey]
 
 	for(let i of keys){
@@ -268,7 +244,7 @@ const appendAdmin = (admin)=>{
 	let keys = list[admin]['zones'][0]
 
 	$('.localities .conditions').remove()
-	// loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+
 	loc_keys = [pinnedKey]
 
 	for(let loc of keys){
@@ -283,10 +259,9 @@ const appendAdmin = (admin)=>{
 const appendZone = (admin,n)=>{
 
 	let keys = list[admin]['zones'][n].sort()
-	// console.log(keys)
 
 	$('.localities .conditions').remove()
-	// loc_keys = [list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']]
+
 	loc_keys = [pinnedKey]
 
 	for(let loc of keys){
@@ -300,29 +275,14 @@ const appendZone = (admin,n)=>{
 	}
 }
 
-// const prepareBlocks = (admin,n)=>{
-
-// 	$('.localities .conditions').remove()
-	
-// 	let keys;
-
-// 	switch(admin){
-// 		case 'AUS': keys = Object.keys(list); break;
-// 		default: 
-// 	}
-// }
-
 const getList = async () => {
+	
 	const res = await fetch('script/AU.json')
 	window['list'] = await res.json()
-
 	window['pinnedKey'] = list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']
 
-	// console.log(list)
-	// console.log(list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key'])
-	
-	// getCurrent(pinnedLocality[0],list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key'])
-	// getForecast5day(pinnedLocality[0],list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key'],0)
+	$('.homeLocality .localityName').html(`${pinnedLocality[1]}&nbsp;${pinnedLocality[0]}`)
+	$('.homeLocality .observation, .homeLocality .forecast').addClass(`k_${pinnedKey}`)
 
 	getCurrent(pinnedLocality[0],pinnedKey)
 	getForecast5day(pinnedLocality[0],pinnedKey,day)
@@ -334,19 +294,9 @@ const getList = async () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*bindings*/
 $('#stateSelect').change(stateSelect)
-
+$('main').on('click','.expand',expand)
+/*bindings*/
 
 getList()
