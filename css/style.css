@@ -139,7 +139,7 @@ footer nav .navBtn{
 
 .conditions{
 	width: 100%;
-	height: 60px;
+	/*height: 60px;*/
 	/*height: 90px;*/
 	/*height: 120px;*/
 	/*background-color: #fc0;*/
@@ -154,7 +154,16 @@ footer nav .navBtn{
 
 	background-color: #fff;
 }
-.observation, .forecast{
+
+
+
+.basic{
+	min-height: 60px;
+}
+
+
+/*.observation, .forecast{*/
+.observation .basic, .forecast .basic{
 	display: flex;
 	justify-content: space-between;
 }
@@ -166,7 +175,8 @@ footer nav .navBtn{
 	box-sizing: border-box;
 }
 /*.conditions .observation .summary div{*/
-.conditions .observation div{
+/*.conditions .observation div{*/
+.conditions .observation .basic div{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -243,9 +253,10 @@ footer nav .navBtn{
 	cursor: pointer;
 }
 .localities{
-	min-height: 100%;
-	min-height: calc(100% - 100px);
+	/*min-height: 100%;*/
+	/*min-height: calc(100% - 100px);*/
 	min-height: calc(100% - 60px);
+	/*height: 100%;*/
 }
 .localities .conditions:nth-child(odd){
 	background-color: #eee;
@@ -287,10 +298,50 @@ footer nav .navBtn{
 }
 
 
+.expanded{
+	height: inherit;
+}
+
 .hidden{
 	display: none;
 }
 
 *{
 	user-select: none;
+}
+
+
+
+
+
+
+
+
+
+.detailed{
+ /*background-color: #fc0;*/
+}
+.detailRow{
+	display: flex;
+	padding: 0 10px;
+}
+.detailCell{
+	min-width: 50%;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 60px;
+	justify-content: center;
+	border-top: solid 1px #7f7f7f;
+}
+.detailHeading{
+	font-size: 0.8em;
+}
+.detailHeading, .detailValue{
+	min-width: 50%;
+	/*flex-grow: 1;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 4px 0px 2px;
 }
