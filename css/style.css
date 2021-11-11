@@ -227,17 +227,32 @@ footer nav .navBtn{
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
+
+	align-items: center;
+	justify-content: center;
 }
 .conditions .forecast .summary div{
-	flex-grow: 1;
+	/*flex-grow: 1;*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 .conditions .forecast .summary .row{
 	display: flex;
-	justify-content: space-between;
-	font-size: 0.8em;
+	/*justify-content: space-between;*/
+	justify-content: space-evenly;
+	/*font-size: 0.8em;*/
+	width: 100%;
+}
+
+.conditions .forecast .detailCell .row{
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+}
+.summaryCell{
+	/*min-width: 25%;*/
+	margin: 4px 0px 2px;
 }
 .conditions .forecast .icon{
 	width: 75px;
@@ -246,7 +261,8 @@ footer nav .navBtn{
 	justify-content: center;
 }
 .conditions .forecast .expand{
-	width: 60px;
+	/*width: 60px;*/
+	width: 75px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -315,7 +331,9 @@ footer nav .navBtn{
 
 
 
-
+.description{
+	text-transform: uppercase;
+}
 
 
 .detailed{
@@ -324,18 +342,25 @@ footer nav .navBtn{
 .detailRow{
 	display: flex;
 	padding: 0 10px;
+	/*justify-content: space-evenly;*/
+}
+.observation .detailCell{
+	min-width: 50%;
 }
 .detailCell{
-	min-width: 50%;
+	/*min-width: 50%;*/
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
 	min-height: 60px;
 	justify-content: center;
 	border-top: solid 1px #7f7f7f;
+
+	box-sizing: border-box;
 }
-.detailHeading{
+.smallHeading{
 	font-size: 0.8em;
+	text-transform: uppercase;
 }
 .detailHeading, .detailValue{
 	min-width: 50%;
@@ -344,4 +369,8 @@ footer nav .navBtn{
 	align-items: center;
 	justify-content: center;
 	margin: 4px 0px 2px;
+}
+
+.noBorder{
+	border: none;
 }

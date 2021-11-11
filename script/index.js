@@ -81,7 +81,7 @@ const populateCurrent = (Key)=>{
 	/*summaries*/
 
 	/*details*/
-	
+
 	/*details*/
 }
 
@@ -100,23 +100,20 @@ const populateForecast = (Key,n)=>{
 	let WeatherIcon = data['DailyForecasts'][n]['Day']['Icon'];if(WeatherIcon < 10){WeatherIcon = '0' + WeatherIcon}
 	$(`.forecast.k_${Key} .icon`).html(`<img src="icons/${WeatherIcon}-s.png">`)
 
-	$(`.forecast.k_${Key} .hi`).html(`${data['DailyForecasts'][n]['Temperature']['Maximum']['Value']}&deg;`)
-	$(`.forecast.k_${Key} .lo`).html(`${data['DailyForecasts'][n]['Temperature']['Minimum']['Value']}&deg;`)
-	
-	// $(`.forecast.k_${Key} .summary .description`).html(data['DailyForecasts'][n]['Day']['ShortPhrase'])
 	$(`.forecast.k_${Key} .summary .description`).html(data['DailyForecasts'][n]['Day']['IconPhrase'])
+	// $(`.forecast.k_${Key} .summary .description`).html(data['DailyForecasts'][n]['Day']['ShortPhrase'])
+
+	$(`.forecast.k_${Key} .summary .lo`).html(`<span class="smallHeading">MIN</span>&nbsp;${data['DailyForecasts'][n]['Temperature']['Minimum']['Value']}&deg;`)
+	$(`.forecast.k_${Key} .summary .hi`).html(`<span class="smallHeading">MAX</span>&nbsp;${data['DailyForecasts'][n]['Temperature']['Maximum']['Value']}&deg;`)
 	
-	$(`.forecast.k_${Key} .summary .precip`).html(`Rain:&nbsp;${data['DailyForecasts'][n]['Day']['RainProbability']}%`)
+	$(`.forecast.k_${Key} .summary .precip`).html(`<span class="smallHeading">Rain</span>&nbsp;${data['DailyForecasts'][n]['Day']['RainProbability']}%`)
 	
 	$(`.forecast.k_${Key} .summary .wind`).html(`
-		Wind:&nbsp;
+		<span class="smallHeading">Wind</span>&nbsp;
 		${data['DailyForecasts'][n]['Day']['Wind']['Direction']['Localized']}&nbsp;
 		${data['DailyForecasts'][n]['Day']['Wind']['Speed']['Value']}&nbsp;
 		${data['DailyForecasts'][n]['Day']['Wind']['Speed']['Unit']}
 	`)
-
-	$(`.forecast.k_${Key} .summary .uv`).html(`UV:&nbsp;${data['DailyForecasts'][n]['AirAndPollen'][5]['Category']}`)
-	$(`.forecast.k_${Key} .summary .air`).html(`Air Quality:&nbsp;${data['DailyForecasts'][n]['AirAndPollen'][n]['Category']}`)
 	/*summaries*/
 
 	$(`.forecast.k_${Key} .expand`).attr('name',`k_${Key}`)
@@ -216,7 +213,7 @@ const appendBlock = (admin,loc,Key)=>{
 					<div class="summary">
 						<div class="localityName">${loc}&nbsp;${admin}</div>
 						<div class="description"></div>
-						<div class="time"></div>
+						<!--<div class="time"></div>-->
 					</div>
 
 					<div class="temperature"></div>				
@@ -227,83 +224,83 @@ const appendBlock = (admin,loc,Key)=>{
 					
 					<div class="detailRow">
 						<div class="detailCell">
-							<div class="detailHeading">FEELS LIKE</div>
+							<div class="detailHeading smallHeading">FEELS LIKE</div>
 							<div class="detailValue feelsLike">XX.X&deg;</div>
 						</div>
 						<div class="detailCell">
-							<div class="detailHeading">SHADE FEELS LIKE</div>
+							<div class="detailHeading smallHeading">SHADE FEELS LIKE</div>
 							<div class="detailValue shadeFeelsLike">XX.X&deg;</div>
 						</div>
 					</div>
 
 					<div class="detailRow">
 						<div class="detailCell">
-							<div class="detailHeading">WIND CHILL TEMP</div>
+							<div class="detailHeading smallHeading">WIND CHILL TEMP</div>
 							<div class="detailValue windChillTemp">XX.X&deg;</div>
 						</div>
 						<div class="detailCell">
-							<div class="detailHeading">DEW POINT</div>
+							<div class="detailHeading smallHeading">DEW POINT</div>
 							<div class="detailValue dewPoint">XX.X&deg;</div>
 						</div>
 					</div>
 
 					<div class="detailRow">
 						<div class="detailCell">
-							<div class="detailHeading">WIND</div>
+							<div class="detailHeading smallHeading">WIND</div>
 							<div class="detailValue windSpeedDir">XXX - XX.X km/h</div>
 						</div>
 						<div class="detailCell">
-							<div class="detailHeading">WIND GUST</div>
+							<div class="detailHeading smallHeading">WIND GUST</div>
 							<div class="detailValue windGust">XX.X km/h</div>
 						</div>
 					</div>
 
 					<div class="detailRow">
 						<div class="detailCell">
-							<div class="detailHeading">UV INDEX</div>
+							<div class="detailHeading smallHeading">UV INDEX</div>
 							<div class="detailValue UV">X - Xxxxxxxx</div>
 						</div>
 						<div class="detailCell">
-							<div class="detailHeading">CLOUD COVER</div>
+							<div class="detailHeading smallHeading">CLOUD COVER</div>
 							<div class="detailValue cloudCover">XX% - XXXX.XXm</div>
 						</div>
 					</div>
 
 					<div class="detailRow">
 						<div class="detailCell">
-							<div class="detailHeading">PRESSUE</div>
+							<div class="detailHeading smallHeading">PRESSUE</div>
 							<div class="detailValue pressure">XXXX.XX hPa</div>
 						</div>
 						<div class="detailCell">
-							<div class="detailHeading">RELATIVE HUMIDITY</div>
+							<div class="detailHeading smallHeading">RELATIVE HUMIDITY</div>
 							<div class="detailValue relativeHumidity">XX.XX%</div>
 						</div>
 					</div>
 
 					<div class="detailRow">
 						<div class="detailCell">
-							<div class="detailHeading">VISIBILITY</div>
+							<div class="detailHeading smallHeading">VISIBILITY</div>
 							<div class="detailValue visibility">XX.X km</div>
 						</div>
 						<div class="detailCell">
-							<div class="detailHeading">OBSTRUCTION TO VISIBILITY</div>
+							<div class="detailHeading smallHeading">OBSTRUCTION</div>
 							<div class="detailValue obstruction">xxxxxxxx</div>
 						</div>
 					</div>
 
 					<div class="detailRow">
 						<div class="detailCell">
-							<div class="detailHeading">TEMPERATURE RANGE SUMMARY</div>
+							<div class="detailHeading smallHeading">TEMPERATURE RANGE SUMMARY</div>
 							<div class="detailRow">
-								<div class="detailHeading">LAST 6 HOURS</div>
+								<div class="detailHeading smallHeading">LAST 6 HOURS</div>
 								<div class="detailValue tempLast6">L:&nbsp;XX.X&deg;&nbsp;-&nbsp;H:&nbsp;XX.X&deg;</div>
 							</div>
 							<div class="detailRow">
-								<div class="detailHeading">LAST 12 HOURS</div>
+								<div class="detailHeading smallHeading">LAST 12 HOURS</div>
 								<div class="detailValue tempLast12">L:&nbsp;XX.X&deg;&nbsp;-&nbsp;H:&nbsp;XX.X&deg;</div>
 							</div>
 							<div class="detailRow">
-								<div class="detailHeading">LAST 24 HOURS</div>
+								<div class="detailHeading smallHeading">LAST 24 HOURS</div>
 								<div class="detailValue tempLast24">L:&nbsp;XX.X&deg;&nbsp;-&nbsp;H:&nbsp;XX.X&deg;</div>
 							</div>
 						</div>
