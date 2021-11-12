@@ -282,7 +282,8 @@ footer nav .navBtn{
 	display: flex;
 	flex-direction: column;
 }
-.conditions.local{
+/*.conditions.local{*/
+.locality.local{
 	position: sticky;
 	top: 0px;
 	/*top: 2px;*/
@@ -363,7 +364,9 @@ footer nav .navBtn{
 	text-transform: uppercase;
 }
 .detailHeading, .detailValue{
+	/*position: relative;*/
 	min-width: 50%;
+	/*width: 50%;*/
 	/*flex-grow: 1;*/
 	display: flex;
 	align-items: center;
@@ -373,4 +376,32 @@ footer nav .navBtn{
 
 .noBorder{
 	border: none;
+}
+
+.ampm{
+	/*min-width: 25%;*/
+	min-width: unset;
+	/*margin: 0 5px 0;*/
+	margin-right: 1em;
+}
+
+.yellow{
+	background-color: #fc0;
+	/*display: none;*/
+}
+
+.warning{
+	min-height: 60px;
+	width: 100%;
+	background-color: #fc0;
+}
+
+
+.conditional{
+	display: none;
+}
+.conditional.shown{
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

@@ -44,288 +44,303 @@
 
 <main>
 	<div class="homeLocality">
-		<div class="conditions local">
-			<div class="observation">
-				
-				<div class="basic">
-					<div class="icon"></div>
-
-					<div class="summary">
-						<div class="localityName"></div>
-						<div class="description"></div>
-						<!--<div class="time"></div>-->
-					</div>
-
-					<div class="temperature"></div>
-				</div>
-
-				<!--*************************-->
-
-				<!-- <div class="detailed hidden"> -->
-				<div class="detailed">
-					
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">FEELS LIKE</div>
-							<div class="detailValue">XX.X&deg;</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">SHADE FEELS LIKE</div>
-							<div class="detailValue">XX.X&deg;</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">WIND CHILL TEMP</div>
-							<div class="detailValue">XX.X&deg;</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">DEW POINT</div>
-							<div class="detailValue">XX.X&deg;</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">WIND</div>
-							<div class="detailValue">XXX - XX.X km/h</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">WIND GUST</div>
-							<div class="detailValue">XX.X km/h</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">UV INDEX</div>
-							<div class="detailValue">X - Xxxxxxxx</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">CLOUD COVER</div>
-							<div class="detailValue">XX% - XXXX.XXm</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">PRESSUE</div>
-							<div class="detailValue">XXXX.XX hPa</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">RELATIVE HUMIDITY</div>
-							<div class="detailValue">XX.XX%</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">VISIBILITY</div>
-							<div class="detailValue">XX.X km</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">OBSTRUCTION</div>
-							<div class="detailValue">xxxxxxxx</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">TEMPERATURE RANGE SUMMARY</div>
-							<div class="detailRow">
-								<div class="detailHeading smallHeading">LAST 6 HOURS</div>
-								<div class="detailValue">L:&nbsp;XX.X&deg;&nbsp;-&nbsp;H:&nbsp;XX.X&deg;</div>
-							</div>
-							<div class="detailRow">
-								<div class="detailHeading smallHeading">LAST 12 HOURS</div>
-								<div class="detailValue">L:&nbsp;XX.X&deg;&nbsp;-&nbsp;H:&nbsp;XX.X&deg;</div>
-							</div>
-							<div class="detailRow">
-								<div class="detailHeading smallHeading">LAST 24 HOURS</div>
-								<div class="detailValue">L:&nbsp;XX.X&deg;&nbsp;-&nbsp;H:&nbsp;XX.X&deg;</div>
-							</div>
-						</div>
-					</div>
+		<div class="locality local">
+			<div class="warning conditional"></div>
 			
-				</div>
-			</div>
+			<div class="conditions local">
 
-			<div class="forecast">
-
-				<div class="basic">
-
-					<div class="icon"></div>
-
-					<div class="summary">
-						<div class="description"></div>
-
-						<div class="row">
-							<div class="summaryCell lo"></div>
-							<div class="summaryCell hi"></div>
-							<div class="summaryCell precip"></div>
+				<div class="observation">
+					<div class="basic">
+						<div class="icon"></div>
+						<div class="summary">
+							<div class="localityName"></div>
+							<div class="description"></div>
 						</div>
-					</div>			
-					<div class="expand">+</div>
-				</div>
-
-				<!-- <div class="detailed hidden"> -->
-				<div class="detailed">
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">feels like</div>
-							<div class="row">
-								<div class="summaryCell"><span class="smallHeading">MIN</span>&nbsp;XXX.XX</div>
-								<div class="summaryCell"><span class="smallHeading">MAX</span>&nbsp;XXX.XX</div>
+						<div class="temperature"></div>
+					</div>
+					<div class="detailed hidden">
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">FEELS LIKE</div>
+								<div class="detailValue feelsLike"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">SHADE FEELS LIKE</div>
+								<div class="detailValue feelsLikeShade"></div>
 							</div>
 						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">shade feels like</div>
-							<div class="row">
-								<div class="summaryCell"><span class="smallHeading">MIN</span>&nbsp;XXX.XX</div>
-								<div class="summaryCell"><span class="smallHeading">MAX</span>&nbsp;XXX.XX</div>
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">WIND CHILL TEMP</div>
+								<div class="detailValue windChill"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">DEW POINT</div>
+								<div class="detailValue dewPoint"></div>
 							</div>
 						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Day</div>
-							<div class="detailValue">Abundant sunshine</div>
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">WIND</div>
+								<div class="detailValue wind"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">WIND GUST</div>
+								<div class="detailValue windGust"></div>
+							</div>
 						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Night</div>
-							<div class="detailValue">Clear and humid</div>
-							
-							<!-- <div class="row">
-								<div class="summaryCell"><span class="smallHeading">RAIN</span>&nbsp;XXX.XX</div>
-							</div> -->
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">UV INDEX</div>
+								<div class="detailValue uv"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CLOUD COVER</div>
+								<div class="detailValue cloudCover"></div>
+							</div>
 						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">Rain</div>
-							<div class="detailValue">XX.XX%&nbsp;-&nbsp;XX.Xmm</div>
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">PRESSUE</div>
+								<div class="detailValue pressure"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">RELATIVE HUMIDITY</div>
+								<div class="detailValue relativeHumidity"></div>
+							</div>
 						</div>
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">Rain</div>
-							<div class="detailValue">XX.XX%&nbsp;-&nbsp;XX.Xmm</div>
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">VISIBILITY</div>
+								<div class="detailValue visibility"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">OBSTRUCTION</div>
+								<div class="detailValue obstruction"></div>
+							</div>
 						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">Thunderstorm</div>
-							<div class="detailValue">XX.XX%</div>
-						</div>
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">Thunderstorm</div>
-							<div class="detailValue">XX.XX%</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">Snow</div>
-							<div class="detailValue">XX.XX%&nbsp;-&nbsp;XX.Xcm</div>
-						</div>
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">Snow</div>
-							<div class="detailValue">XX.XX%&nbsp;-&nbsp;XX.Xcm</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">Ice</div>
-							<div class="detailValue">XX.XX%&nbsp;-&nbsp;XX.Xmm</div>
-						</div>
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">Ice</div>
-							<div class="detailValue">XX.XX%&nbsp;-&nbsp;XX.Xmm</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">WIND</div>
-							<div class="detailValue">XX.XX%&nbsp;-&nbsp;XX.Xmm</div>
-						</div>
-						<div class="detailCell noBorder">
-							<div class="detailHeading smallHeading">WIND</div>
-							<div class="detailValue">XX.XX%&nbsp;-&nbsp;XX.Xmm</div>
-						</div>
-					</div>
-
-<!-- 					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Chance of rain during Day</div>
-							<div class="detailValue">XX.X%&nbsp;-&nbsp;XX.Xmm</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Chance of rain during Night</div>
-							<div class="detailValue">XX.X%&nbsp;-&nbsp;XX.Xmm</div>
-						</div>
-					</div> -->
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">SUNRISE</div>
-							<div class="detailValue">XX:XXam</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">SUNSET</div>
-							<div class="detailValue">XX:XXpm</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Hours of sun</div>
-							<div class="detailValue">XX.XX</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">UV INDEX</div>
-							<div class="detailValue">X xxxxxxx</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Air Quality</div>
-							<div class="detailValue">Good</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Grass</div>
-							<div class="detailValue">XX.XX</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Mould</div>
-							<div class="detailValue">XX.XX</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Ragweed</div>
-							<div class="detailValue">XX.XX</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Tree</div>
-							<div class="detailValue">XX.XX</div>
-						</div>
-					</div>
-
-					<div class="detailRow">
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Solar Irradiance</div>
-							<div class="detailValue">XX.XX W/m2</div>
-						</div>
-						<div class="detailCell">
-							<div class="detailHeading smallHeading">Evapotranspiration</div>
-							<div class="detailValue">X mm</div>
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">TEMPERATURE RANGE SUMMARY</div>
+								<div class="detailRow">
+									<div class="detailHeading smallHeading">LAST 6 HOURS</div>
+									<div class="detailValue tempRange_06"></div>
+								</div>
+								<div class="detailRow">
+									<div class="detailHeading smallHeading">LAST 12 HOURS</div>
+									<div class="detailValue tempRange_12"></div>
+								</div>
+								<div class="detailRow">
+									<div class="detailHeading smallHeading">LAST 24 HOURS</div>
+									<div class="detailValue tempRange_24"></div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 
+				<div class="forecast">
+
+					<div class="basic">
+
+						<div class="icon"></div>
+
+						<div class="summary">
+							<div class="description"></div>
+
+							<div class="row">
+								<div class="summaryCell lo"></div>
+								<div class="summaryCell hi"></div>
+								<div class="summaryCell precip"></div>
+							</div>
+						</div>			
+						<div class="expand">+</div>
+					</div>
+
+					<div class="detailed hidden">
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">feels like</div>
+								<div class="row">
+									<div class="summaryCell"><span class="smallHeading">MIN</span>&nbsp;XXX.XX</div>
+									<div class="summaryCell"><span class="smallHeading">MAX</span>&nbsp;XXX.XX</div>
+								</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">shade feels like</div>
+								<div class="row">
+									<div class="summaryCell"><span class="smallHeading">MIN</span>&nbsp;XXX.XX</div>
+									<div class="summaryCell"><span class="smallHeading">MAX</span>&nbsp;XXX.XX</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Day</div>
+								<div class="detailValue">Abundant sunshine</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Night</div>
+								<div class="detailValue">Clear and humid</div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CHANCE OF RAIN</div>
+								<div class="detailRow">
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">DAY</div>
+										<div class="detailValue">XX.X%&nbsp;-&nbsp;XX.Xmm</div>
+									</div>
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">NIGHT</div>
+										<div class="detailValue">XX.X%&nbsp;-&nbsp;XX.Xmm</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="detailRow conditional">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CHANCE OF THUNDERSTORM</div>
+								<div class="detailRow">
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">DAY</div>
+										<div class="detailValue">XX.X%</div>
+									</div>
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">NIGHT</div>
+										<div class="detailValue">XX.X%</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="detailRow conditional">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CHANCE OF SNOW</div>
+								<div class="detailRow">
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">DAY</div>
+										<div class="detailValue">XX.X%&nbsp;-&nbsp;XX.Xcm</div>
+									</div>
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">NIGHT</div>
+										<div class="detailValue">XX.X%&nbsp;-&nbsp;XX.Xcm</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="detailRow conditional">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CHANCE OF ICE</div>
+								<div class="detailRow">
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">DAY</div>
+										<div class="detailValue">XX.X%&nbsp;-&nbsp;XX.Xmm</div>
+									</div>
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">NIGHT</div>
+										<div class="detailValue">XX.X%&nbsp;-&nbsp;XX.Xmm</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">WIND</div>
+								<div class="detailRow">
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">DAY</div>
+										<div class="detailValue">XXX&nbsp;-&nbsp;XX.X km/h</div>
+									</div>
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">NIGHT</div>
+										<div class="detailValue">XXX&nbsp;-&nbsp;XX.X km/h</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">WIND GUST</div>
+								<div class="detailRow">
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">DAY</div>
+										<div class="detailValue">XX.X km/h</div>
+									</div>
+									<div class="detailHeading">
+										<div class="detailHeading smallHeading ampm">NIGHT</div>
+										<div class="detailValue">XX.X km/h</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">SUNRISE</div>
+								<div class="detailValue">XX:XXam</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">SUNSET</div>
+								<div class="detailValue">XX:XXpm</div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Hours of sun</div>
+								<div class="detailValue">XX.XX</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">UV INDEX</div>
+								<div class="detailValue">X xxxxxxx</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Air Quality</div>
+								<div class="detailValue">Good</div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Grass</div>
+								<div class="detailValue">XX.XX</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Mould</div>
+								<div class="detailValue">XX.XX</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Ragweed</div>
+								<div class="detailValue">XX.XX</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Tree</div>
+								<div class="detailValue">XX.XX</div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Solar Irradiance</div>
+								<div class="detailValue">XX.XX W/m2</div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">Evapotranspiration</div>
+								<div class="detailValue">X mm</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
 			</div>
 		</div>
 
