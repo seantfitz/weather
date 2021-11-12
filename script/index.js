@@ -163,6 +163,85 @@ const populateForecast = (Key,n)=>{
 	`)
 	/*summaries*/
 
+	/*details*/
+	$(`.forecast.k_${Key} .feelMin`).html(`<span class="smallHeading">MIN</span>&nbsp;${data['DailyForecasts'][n]['RealFeelTemperature']['Minimum']['Value']}&deg;`)
+	$(`.forecast.k_${Key} .feelMax`).html(`<span class="smallHeading">MIN</span>&nbsp;${data['DailyForecasts'][n]['RealFeelTemperature']['Maximum']['Value']}&deg;`)
+	$(`.forecast.k_${Key} .feelShadeMin`).html(`<span class="smallHeading">MIN</span>&nbsp;${data['DailyForecasts'][n]['RealFeelTemperatureShade']['Minimum']['Value']}&deg;`)
+	$(`.forecast.k_${Key} .feelShadeMax`).html(`<span class="smallHeading">MIN</span>&nbsp;${data['DailyForecasts'][n]['RealFeelTemperatureShade']['Maximum']['Value']}&deg;`)
+	
+	$(`.forecast.k_${Key} .phraseDay`).html(`${data['DailyForecasts'][n]['Day']['ShortPhrase']}`)
+	$(`.forecast.k_${Key} .phraseNight`).html(`${data['DailyForecasts'][n]['Night']['ShortPhrase']}`)
+	
+	$(`.forecast.k_${Key} .rainDay`).html(`${data['DailyForecasts'][n]['Day']['RainProbability']}%&nbsp;-&nbsp;${data['DailyForecasts'][n]['Day']['Rain']['Value']}${data['DailyForecasts'][n]['Day']['Rain']['Unit']}`)
+	$(`.forecast.k_${Key} .rainNight`).html(`${data['DailyForecasts'][n]['Night']['RainProbability']}%&nbsp;-&nbsp;${data['DailyForecasts'][n]['Night']['Rain']['Value']}${data['DailyForecasts'][n]['Night']['Rain']['Unit']}`)
+	
+	$(`.forecast.k_${Key} .thunderDay`).html(`${data['DailyForecasts'][n]['Day']['ThunderstormProbability']}%`)
+	$(`.forecast.k_${Key} .thunderNight`).html(`${data['DailyForecasts'][n]['Night']['ThunderstormProbability']}%`)
+	
+	$(`.forecast.k_${Key} .snowDay`).html(`${data['DailyForecasts'][n]['Day']['SnowProbability']}%&nbsp;-&nbsp;${data['DailyForecasts'][n]['Day']['Snow']['Value']}${data['DailyForecasts'][n]['Day']['Snow']['Unit']}`)
+	$(`.forecast.k_${Key} .snowNight`).html(`${data['DailyForecasts'][n]['Night']['SnowProbability']}%&nbsp;-&nbsp;${data['DailyForecasts'][n]['Night']['Snow']['Value']}${data['DailyForecasts'][n]['Night']['Snow']['Unit']}`)
+	
+	$(`.forecast.k_${Key} .iceDay`).html(`${data['DailyForecasts'][n]['Day']['IceProbability']}%&nbsp;-&nbsp;${data['DailyForecasts'][n]['Day']['Ice']['Value']}${data['DailyForecasts'][n]['Day']['Ice']['Unit']}`)
+	$(`.forecast.k_${Key} .iceNight`).html(`${data['DailyForecasts'][n]['Night']['IceProbability']}%&nbsp;-&nbsp;${data['DailyForecasts'][n]['Night']['Ice']['Value']}${data['DailyForecasts'][n]['Night']['Ice']['Unit']}`)
+	
+	$(`.forecast.k_${Key} .windDay`).html(`
+		${data['DailyForecasts'][n]['Day']['Wind']['Direction']['Localized']}&nbsp;-&nbsp;${data['DailyForecasts'][n]['Day']['Wind']['Speed']['Value']}
+		${data['DailyForecasts'][n]['Day']['Wind']['Speed']['Unit']}
+	`)
+	$(`.forecast.k_${Key} .windNight`).html(`
+		${data['DailyForecasts'][n]['Night']['Wind']['Direction']['Localized']}&nbsp;-&nbsp;${data['DailyForecasts'][n]['Night']['Wind']['Speed']['Value']}
+		${data['DailyForecasts'][n]['Night']['Wind']['Speed']['Unit']}
+	`)
+
+	$(`.forecast.k_${Key} .gustDay`).html(`
+		${data['DailyForecasts'][n]['Day']['WindGust']['Direction']['Localized']}&nbsp;-&nbsp;${data['DailyForecasts'][n]['Day']['WindGust']['Speed']['Value']}
+		${data['DailyForecasts'][n]['Day']['WindGust']['Speed']['Unit']}
+	`)
+	$(`.forecast.k_${Key} .gustNight`).html(`
+		${data['DailyForecasts'][n]['Night']['WindGust']['Direction']['Localized']}&nbsp;-&nbsp;${data['DailyForecasts'][n]['Night']['WindGust']['Speed']['Value']}
+		${data['DailyForecasts'][n]['Night']['WindGust']['Speed']['Unit']}
+	`)
+	
+	// $(`.forecast.k_${Key} .gustDay`).html(`${data['DailyForecasts'][n]['Day']['']}`)
+	// $(`.forecast.k_${Key} .gustNight`).html(`${data['DailyForecasts'][n]['Night']['']}`)
+	
+	$(`.forecast.k_${Key} .sunrise`).html(`${data['DailyForecasts'][n]['Sun']['Rise'].substring(11,16)}`)
+	$(`.forecast.k_${Key} .sunset`).html(`${data['DailyForecasts'][n]['Sun']['Set'].substring(11,16)}`)
+	
+	$(`.forecast.k_${Key} .sunHours`).html(`${data['DailyForecasts'][n]['HoursOfSun']}`)
+	
+	$(`.forecast.k_${Key} .uv`).html(`${data['DailyForecasts'][n]['AirAndPollen'][5]['Value']}&nbsp;-&nbsp;${data['DailyForecasts'][n]['AirAndPollen'][5]['Category']}`)
+	$(`.forecast.k_${Key} .air`).html(`${data['DailyForecasts'][n]['AirAndPollen'][0]['Category']}`)
+	$(`.forecast.k_${Key} .grass`).html(`${data['DailyForecasts'][n]['AirAndPollen'][1]['Category']}`)
+	$(`.forecast.k_${Key} .mould`).html(`${data['DailyForecasts'][n]['AirAndPollen'][2]['Category']}`)
+	$(`.forecast.k_${Key} .ragweed`).html(`${data['DailyForecasts'][n]['AirAndPollen'][3]['Category']}`)
+	$(`.forecast.k_${Key} .tree`).html(`${data['DailyForecasts'][n]['AirAndPollen'][4]['Category']}`)
+	
+	$(`.forecast.k_${Key} .solarDay`).html(`<span class="smallHeading">DAY</span>&nbsp;${data['DailyForecasts'][n]['Day']['SolarIrradiance']['Value']}&nbsp;${data['DailyForecasts'][n]['Day']['SolarIrradiance']['Unit']}`)
+	$(`.forecast.k_${Key} .solarNight`).html(`<span class="smallHeading">NIGHT</span>&nbsp;${data['DailyForecasts'][n]['Night']['SolarIrradiance']['Value']}&nbsp;${data['DailyForecasts'][n]['Night']['SolarIrradiance']['Unit']}`)
+	
+	$(`.forecast.k_${Key} .evapDay`).html(`<span class="smallHeading">DAY</span>&nbsp;${data['DailyForecasts'][n]['Day']['Evapotranspiration']['Value']}&nbsp;${data['DailyForecasts'][n]['Day']['Evapotranspiration']['Unit']}`)
+	$(`.forecast.k_${Key} .evapNight`).html(`<span class="smallHeading">NIGHT</span>&nbsp;${data['DailyForecasts'][n]['Night']['Evapotranspiration']['Value']}&nbsp;${data['DailyForecasts'][n]['Night']['Evapotranspiration']['Unit']}`)
+	/*details*/
+
+	if(data['DailyForecasts'][n]['Day']['ThunderstormProbability'] > 0 || data['DailyForecasts'][n]['Night']['ThunderstormProbability'] > 0){
+		$(`.forecast.k_${Key} .thunder`).addClass('shown')
+	}else{
+		$(`.forecast.k_${Key} .thunder`).removeClass('shown')
+	}
+
+	if(data['DailyForecasts'][n]['Day']['SnowProbability'] > 0 || data['DailyForecasts'][n]['Night']['SnowProbability'] > 0){
+		$(`.forecast.k_${Key} .snow`).addClass('shown')
+	}else{
+		$(`.forecast.k_${Key} .snow`).removeClass('shown')
+	}
+
+	if(data['DailyForecasts'][n]['Day']['IceProbability'] > 0 || data['DailyForecasts'][n]['Night']['IceProbability'] > 0){
+		$(`.forecast.k_${Key} .ice`).addClass('shown')
+	}else{
+		$(`.forecast.k_${Key} .ice`).removeClass('shown')
+	}
+
 	$(`.forecast.k_${Key} .expand`).attr('name',`k_${Key}`)
 }
 
@@ -259,7 +338,7 @@ const appendBlock = (admin,loc,Key)=>{
 					<div class="basic">
 						<div class="icon"></div>
 						<div class="summary">
-							<div class="localityName"></div>
+							<div class="localityName">${loc}&nbsp;${admin}</div>
 							<div class="description"></div>
 						</div>
 						<div class="temperature"></div>
@@ -399,7 +478,7 @@ const appendBlock = (admin,loc,Key)=>{
 								</div>
 							</div>
 						</div>
-						<div class="detailRow conditional">
+						<div class="detailRow conditional thunder">
 							<div class="detailCell">
 								<div class="detailHeading smallHeading">CHANCE OF THUNDERSTORM</div>
 								<div class="detailRow">
@@ -414,7 +493,7 @@ const appendBlock = (admin,loc,Key)=>{
 								</div>
 							</div>
 						</div>
-						<div class="detailRow conditional">
+						<div class="detailRow conditional snow">
 							<div class="detailCell">
 								<div class="detailHeading smallHeading">CHANCE OF SNOW</div>
 								<div class="detailRow">
@@ -429,7 +508,7 @@ const appendBlock = (admin,loc,Key)=>{
 								</div>
 							</div>
 						</div>
-						<div class="detailRow conditional">
+						<div class="detailRow conditional ice">
 							<div class="detailCell">
 								<div class="detailHeading smallHeading">CHANCE OF ICE</div>
 								<div class="detailRow">
@@ -519,11 +598,17 @@ const appendBlock = (admin,loc,Key)=>{
 						<div class="detailRow">
 							<div class="detailCell">
 								<div class="detailHeading smallHeading">SOLAR IRRADIANCE</div>
-								<div class="detailValue solar"></div>
+								<div class="row">
+									<div class="summaryCell solarDay"></div>
+									<div class="summaryCell solarNight"></div>
+								</div>
 							</div>
 							<div class="detailCell">
 								<div class="detailHeading smallHeading">EVAPOTRANSPIRATION</div>
-								<div class="detailValue evap"></div>
+								<div class="row">
+									<div class="summaryCell evapDay"></div>
+									<div class="summaryCell evapNight"></div>
+								</div>
 							</div>
 						</div>
 					</div>
