@@ -326,7 +326,8 @@ footer nav .navBtn{
 
 	/*background-color: #f0f;*/
 
-	background-image: url(../images/AUS.jpg);
+	/*background-image: url(../images/AUS.jpg);*/
+	background-image: url(../images/AU.jpg);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
