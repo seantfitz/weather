@@ -256,25 +256,31 @@ const stateSelect = (e)=>{
 	let v = e.target.value
 	selectedRegion = v
 
+	$('.locality').removeClass('hidden');
+	$('.detailed').addClass('hidden');
+	$('.expand').text('+');
+
 	switch(v){
 		case 'AUS': appendNational();
-		$('.mapBox, .prompt').removeClass('hidden');
-		$('.homeLocality').css('height','100%');
+		$('.mapBox, .prompt').removeClass('displayNone');
+		// $('.homeLocality').css('height','100%');
+		$('.mapBox').css('background-image',`url(images/${v}.jpg)`)
 		break;
 		
 		case 'region': appendZone('QLD',2);
-		$('.mapBox, .prompt').addClass('hidden');
-		$('.homeLocality').css('height','auto');
+		$('.mapBox, .prompt').addClass('displayNone');
+		// $('.homeLocality').css('height','auto');
 		break;
 
 		default: appendAdmin(v)
-		$('.mapBox, .prompt').removeClass('hidden');
-		$('.homeLocality').css('height','100%');
+		$('.mapBox, .prompt').removeClass('displayNone');
+		// $('.homeLocality').css('height','100%');
+		$('.mapBox').css('background-image',`url(images/${v}.jpg)`)
 	}
 
-	$('.mapBox').css('background-image',`url(images/${v}.jpg)`)
+	// $('.mapBox').css('background-image',`url(images/${v}.jpg)`)
 
-	$('main').scrollTop(0)
+	$('main').scrollTop()
 }
 
 
@@ -324,16 +330,32 @@ const stateSelect = (e)=>{
 // }
 
 const expand = (e)=>{
+
 	let x = $(e.target)
 	let n = x.attr('name')
-	$(`.conditions .${n} .detailed`).toggleClass('hidden')
+
+	switch(x.text()){
+		case '+':x.text('-');break;
+		case '-':x.text('+');break;
+	}
+
+	$(`
+		.locality,
+		.conditions .${n} .detailed,
+		.mapBox,
+		.prompt
+	`).not(`.locality.${n}`).toggleClass('hidden')
+
+	$('main').scrollTop(0)
+	// console.log($('main').height())
+	// $('main').scrollTop() + $('main').height()
 }
 
 const appendBlock = (admin,loc,Key)=>{
 	$('.localities').append(`
 		<div class="locality k_${Key}">
 			<div class="warning conditional"></div>
-			<div class="conditions local k_${Key}">
+			<div class="conditions k_${Key}">
 				<div class="observation k_${Key}">
 					<div class="basic">
 						<div class="icon"></div>
@@ -689,7 +711,7 @@ const getList = async () => {
 	window['pinnedKey'] = list[pinnedLocality[0]]['localities'][pinnedLocality[1]]['Key']
 
 	$('.homeLocality .localityName').html(`${pinnedLocality[1]}&nbsp;${pinnedLocality[0]}`)
-	$('.homeLocality .observation, .homeLocality .forecast').addClass(`k_${pinnedKey}`)
+	$('.homeLocality .locality, .homeLocality .observation, .homeLocality .forecast').addClass(`k_${pinnedKey}`)
 
 	getCurrent(pinnedLocality[0],pinnedKey)
 	getForecast5day(pinnedLocality[0],pinnedKey,day)
