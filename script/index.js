@@ -28,7 +28,8 @@ let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
 let today = new Date()
 
 let pinnedLocality = ['QLD','Pittsworth']
-let selectedRegion = 'AUS'
+// let selectedRegion = 'AUS'
+let selectedRegion = 'AU'
 let day = 0;
 let loc_keys = [];
 
@@ -261,7 +262,8 @@ const stateSelect = (e)=>{
 	$('.expand').text('+');
 
 	switch(v){
-		case 'AUS': appendNational();
+		// case 'AUS': appendNational();
+		case 'AU': appendNational();
 		$('.mapBox, .prompt').removeClass('displayNone');
 		// $('.homeLocality').css('height','100%');
 		$('.mapBox').css('background-image',`url(images/${v}.jpg)`)
