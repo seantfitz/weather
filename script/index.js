@@ -256,7 +256,7 @@ const stateSelect = (e)=>{
 	let v = e.target.value
 	selectedRegion = v
 
-	$('.locality').removeClass('hidden');
+	$('.locality, .mapBox, .prompt').removeClass('hidden');
 	$('.detailed').addClass('hidden');
 	$('.expand').text('+');
 
@@ -280,54 +280,11 @@ const stateSelect = (e)=>{
 
 	// $('.mapBox').css('background-image',`url(images/${v}.jpg)`)
 
-	$('main').scrollTop()
+	$('main').scrollTop({
+		behavior: "smooth", // or "auto" or "instant"
+		block: "start" // or "end"
+	})
 }
-
-
-// const expand = (e)=>{
-
-// 	let x = $(e.target)
-// 	let p = $(x.closest('.conditions')[0])
-
-// 	// console.log(p.classList)
-// 	console.log(p.hasClass('expanded'))
-
-// 	switch(true){
-// 		case p.hasClass('expanded'):
-		
-// 		p.removeClass('expanded');
-// 		break;
-		
-
-// 		default:
-
-// 		// x.css({'background-color':'red','height':"120px"})
-// 		$('.conditions.expanded').removeClass('expanded');
-		
-
-// 		p.addClass('expanded');
-// 	}
-
-
-
-// 	// console.log($(x).parent()[0])
-// 	// console.log(x.parent()[0])
-// 	// console.log(x.closest('.conditions')[0])
-
-
-
-// 	// console.log(e.target)
-// 	// console.log(e.target.getAttribute('name'))
-// 	let Key = e.target.getAttribute('name').replace(/k_/g,'')
-
-// 	console.log(Key)
-
-// 	// $(`.k_${Key}`).css('height','100%')
-
-
-// 	console.log(window[`current_${Key}`])
-// 	console.log(window[`forecast_${Key}`])
-// }
 
 const expand = (e)=>{
 
@@ -346,9 +303,10 @@ const expand = (e)=>{
 		.prompt
 	`).not(`.locality.${n}`).toggleClass('hidden')
 
-	$('main').scrollTop(0)
-	// console.log($('main').height())
-	// $('main').scrollTop() + $('main').height()
+	$(`.locality.${n}`)[0].scrollIntoView({
+		behavior: "smooth", // or "auto" or "instant"
+		block: "start" // or "end"
+	});
 }
 
 const appendBlock = (admin,loc,Key)=>{
