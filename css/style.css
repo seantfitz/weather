@@ -132,7 +132,10 @@ footer{
 	bottom: 0px;
 	/*background-color: #00f;*/
 }
-
+a{
+	color: unset;
+	text-decoration: none;
+}
 .navBtn{
 	height: 100%;
 	/*text-align: center;*/
@@ -429,7 +432,6 @@ footer nav .navBtn{
 
 .yellow{
 	background-color: #fc0;
-	/*display: none;*/
 }
 
 .warning{
@@ -456,3 +458,7 @@ footer nav .navBtn{
 .thunder, .snow, .ice{
 	background-color: #ffe;
 }
+
+
+
+

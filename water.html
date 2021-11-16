@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>weather</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet"href="css/style.css">
+	<style type="text/css">
+		.snow, .ice{
+			background-color: unset;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+
+	<nav class="topNav">
+		<div class="row">
+			<select id="stateSelect">
+				<option value="AU" disabled="true" id="clearStateSelection">National</option>
+				<option value="region" selected="true">Region</option>
+				<option value="QLD" disabled="true">Queensland</option>
+				<!-- <option value="NSWACT">NSW / ACT</option> -->
+				<option value="NSW" disabled="true">New South Wales</option>
+				<option value="ACT" disabled="true">ACT</option>
+				<option value="VIC" disabled="true">Victoria</option>
+				<option value="TAS" disabled="true">Tasmania</option>
+				<option value="SA" disabled="true">South Australia</option>
+				<option value="WA" disabled="true">Western Australia</option>
+				<option value="NT" disabled="true">Northern Territory</option>
+			</select>
+
+			<div class="tense">
+				<div class="tenseNav prev"><</div>
+				<span class="tenseText">Tuesday Nov 2</span>
+				<div class="tenseNav next active">></div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="currentHead">CURRENT CONDITIONS</div>
+			<div class="forecastHead">FORECAST</div>
+		</div>
+	</nav>
+</header>
+
+<main>
+	<div class="homeLocality">
+		<div class="locality local">
+			<div class="warning conditional"></div>
+			<div class="conditions local">
+				<div class="observation">
+					<div class="basic">
+						<div class="icon"></div>
+						<div class="summary">
+							<div class="localityName"></div>
+							<div class="description"></div>
+						</div>
+						<div class="temperature"></div>
+					</div>
+
+					<div class="detailed hidden">
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">DEW POINT</div>
+								<div class="detailValue dewPoint"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">RELATIVE HUMIDITY</div>
+								<div class="detailValue relativeHumidity"></div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CLOUD COVER</div>
+								<div class="detailValue cloudCover"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CLOUD CEILING</div>
+								<div class="detailValue cloudCeiling"></div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">PRECIPITATION SUMMARY</div>
+								<div class="detailRow precipRange_01">
+									<div class="detailHeading smallHeading">LAST HOUR</div>
+									<div class="detailValue precipRange_01"></div>
+								</div>
+								<div class="detailRow precipRange_03 conditional">
+									<div class="detailHeading smallHeading">LAST 3 HOURs</div>
+									<div class="detailValue precipRange_03"></div>
+								</div>
+								<div class="detailRow precipRange_06 conditional">
+									<div class="detailHeading smallHeading">LAST 6 HOURS</div>
+									<div class="detailValue precipRange_06"></div>
+								</div>
+								<div class="detailRow precipRange_09 conditional">
+									<div class="detailHeading smallHeading">LAST 9 HOURS</div>
+									<div class="detailValue precipRange_09"></div>
+								</div>
+								<div class="detailRow precipRange_12 conditional">
+									<div class="detailHeading smallHeading">LAST 12 HOURS</div>
+									<div class="detailValue precipRange_12"></div>
+								</div>
+								<div class="detailRow precipRange_18 conditional">
+									<div class="detailHeading smallHeading">LAST 18 HOURS</div>
+									<div class="detailValue precipRange_18"></div>
+								</div>
+								<div class="detailRow precipRange_24">
+									<div class="detailHeading smallHeading">LAST 24 HOURS</div>
+									<div class="detailValue precipRange_24"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="forecast">
+					<div class="basic">
+						<div class="icon"></div>
+
+						<div class="detailCell noBorder">
+							<div class="detailHeading smallHeading">RAIN</div>
+							<div class="detailValue rain"></div>
+						</div>
+						<div class="detailCell noBorder">
+							<div class="detailHeading smallHeading">SNOW</div>
+							<div class="detailValue snow"></div>
+						</div>
+						<div class="detailCell noBorder">
+							<div class="detailHeading smallHeading">ICE</div>
+							<div class="detailValue ice"></div>
+						</div>
+
+						<div class="expand">+</div>
+					</div>
+
+					<div class="detailed hidden">
+						
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">DEW POINT</div>
+								<div class="detailValue dewPoint"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">RELATIVE HUMIDITY</div>
+								<div class="detailValue relativeHumidity"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">TEMPERATURE</div>
+								<div class="detailValue temperature"></div>
+							</div>
+						</div>
+
+						<div class="detailRow">
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CLOUD COVER</div>
+								<div class="detailValue cloudCover"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">CLOUD CEILING</div>
+								<div class="detailValue cloudCeiling"></div>
+							</div>
+							<div class="detailCell">
+								<div class="detailHeading smallHeading">EVAPOTRANSPIRATION</div>
+								<div class="detailValue evapotranspiration"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mapBox"></div>
+		<div class="prompt">
+			<div class="blink_me">&#8964;</div>
+		</div>
+	</div>
+
+	<div class="localities"></div>
+
+</main>
+
+<footer>
+	<nav>
+		<div class="navBtn">
+			<a href="index.html">
+				Summaries
+			</a>
+		</div>
+		<div class="navBtn selected">
+			<a href="water.html">
+				Rain & Water
+			</a>
+		</div>
+		<div class="navBtn">
+			<a href="index.html">
+				Analysis
+			</a>
+		</div>
+		<div class="navBtn">
+			<a href="index.html">
+				World
+			</a>
+		</div>
+	</nav>
+</footer>
+<script src="script/water.js"></script>
+
+</body>
+</html>

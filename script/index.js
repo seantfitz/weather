@@ -1,36 +1,12 @@
-/*query string paramaters*/
-// //https://flaviocopes.com/urlsearchparams/
-// const params = new URLSearchParams(window.location.search)
-
-
-// console.log(params.has('admin'))
-// console.log(params.get('admin'))
-
-// for(const param of params) {
-// 	console.log(param)
-// }
-/*query string paramaters*/
-
-// const getWeather = async (id) => {
-// 	const baseUrl = "http://dataservice.accuweather.com/currentconditions/v1/";
-// 	// const baseUrl = "http://dataservice.accuweather.com/forecasts/v1/";
-// 	const query = `${id}?apikey=${key}`;
-
-// 	const res = await fetch(baseUrl + query);
-// 	const data = await res.json();
-
-// 	return data[0];
-// };
-
 let days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
 let today = new Date()
 
 let pinnedLocality = ['QLD','Pittsworth']
-// let selectedRegion = 'AUS'
 let selectedRegion = 'AU'
 let day = 0;
+let hour = 0;
 let loc_keys = [];
 
 const tenseNav = (e)=>{
@@ -246,11 +222,15 @@ const populateForecast = (Key,n)=>{
 	$(`.forecast.k_${Key} .expand`).attr('name',`k_${Key}`)
 }
 
-
 const getForecast5day = async(admin,Key,n)=>{
 	let res = await fetch(`script/forecast5day/${Key}.json`)
 	window[`forecast_${Key}`] = await res.json()
 	populateForecast(Key,n)
+}
+
+const getForecast12hour = async(Key)=>{
+	let res = await fetch(`script/forecast12hour/${Key}.json`)
+	window[`hourly_${Key}`] = await res.json()
 }
 
 const stateSelect = (e)=>{
@@ -605,8 +585,6 @@ const appendBlock = (admin,loc,Key)=>{
 	getCurrent(admin,Key)
 	getForecast5day(admin,Key,day)
 }
-	
-
 
 const appendNational = ()=>{
 
@@ -680,8 +658,6 @@ const getList = async () => {
 	// appendAdmin('QLD')
 	// appendZone('QLD',2)
 }
-
-
 
 /*bindings*/
 $('#stateSelect').change(stateSelect)
