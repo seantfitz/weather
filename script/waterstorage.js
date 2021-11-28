@@ -113,16 +113,7 @@ const getStorageLocations = async()=>{
 }
 // getStorageLocations()
 
-const states = ['ACT','NSW','NT','QLD','SA','TAS','VIC','WA']
-const state_names = [
-	'Australian Capital Territory',
-	'New South Wales',
-]
-
-// const states = {
-// 	ACT:['Australian Capital Territory'],
-// 	NSW:['New South Wales','New South Wales and Victoria']
-// }
+const states = ['act','nsw','nt','qld','sa','tas','vic','wa']
 
 //"Storage","Water level (mAHD)","Water depth (m)","Volume (ML)","Capacity (ML)","Volume (%)","Reported date"
 
