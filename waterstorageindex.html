@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Water Storage</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+	
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+	<link rel="stylesheet"href="css/style.css">
+	<style type="text/css">
+
+		body{
+			margin: 0;
+			/*width: 100vw;*/
+			/*height: 100vh;*/
+			/*display: flex;*/
+			/*justify-content: center;*/
+			/*align-items: center;*/
+		}
+
+		header{
+			height: 40px;
+		}
+		main{
+			top: 40px;
+		}
+
+		#storagesMap{
+			/*width: 870px;*/
+			/*height: 520px;*/
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+
+</head>
+<body>
+
+<header>
+
+	<nav class="topNav">
+		<div class="row">
+			<select id="stateSelect">
+				<option value="AU" id="clearStateSelection">National</option>
+				<option value="QLD">Queensland</option>
+				<option value="NSW">New South Wales</option>
+				<option value="ACT">ACT</option>
+				<option value="VIC">Victoria</option>
+				<option value="TAS">Tasmania</option>
+				<option value="SA">South Australia</option>
+				<option value="WA">Western Australia</option>
+				<option value="NT">Northern Territory</option>
+			</select>
+
+		</div>
+
+
+	</nav>
+</header>
+
+<main>
+
+	<div id="storagesMap"></div>	
+
+</main>
+
+<footer>
+	<nav>
+		<div class="navBtn">
+			<!-- <a href="index.html"> -->
+				Summaries
+			<!-- </a> -->
+		</div>
+		<div class="navBtn selected">
+			<!-- <a href="water.html"> -->
+				Rain & Water
+			<!-- </a> -->
+		</div>
+		<div class="navBtn">
+			<!-- <a href="index.html"> -->
+				Analysis
+			<!-- </a> -->
+		</div>
+		<div class="navBtn">
+			<!-- <a href="index.html"> -->
+				World
+			<!-- </a> -->
+		</div>
+	</nav>
+</footer>
+
+<script src="script/waterstorage.js"></script>
+
+</body>
+</html>

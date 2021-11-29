@@ -15,6 +15,40 @@ L.control.scale({imperial: false, metric: true}).addTo(storagesMap);
 const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 
+let selectedRegion = 'AU'
+
+// const stateBox = {//W,S,E,N
+// 	// NSW:[140.999286483091,-37.5052674371251,159.105448901665,-28.157007484129],
+// 	NSW:[140.999286483091,-37.5052674371251,153.660861,-28.157007484129],
+// 	QLD:[137.99596539614,-29.1778849996844,153.555247484414,-9.14118954253052],
+// 	VIC:[140.961865804717,-39.1591796902753,149.976504105742,-33.980636405904],
+// 	TAS:[143.818576726639,-43.7429686004967,148.50313834661,-39.1919773009046],
+// 	SA:[129.001348803946,-38.0625895910114,141.002962544954,-25.996363071308],
+// 	WA:[112.921124550164,-35.134832521502,129.001862438231,-13.6894781340124],
+// 	NT:[129.000484929137,-25.9986044823092,138.001207833215,-10.965900135588],
+// 	ACT:[148.762795689483,-35.920517211112,149.399292549604,-35.1244029421091],
+// 	// ACT:[148.762795689483,-35.920517211112,150.765777,-35.1178241],//including jervis bay territory
+
+// 	AUS:[112.921124550164,-43.7429686004967,153.660861,-9.14118954253052]
+// }
+
+const state_centre = {//W,S,E,N
+	AU:[[-25.2744, 133.7751], 4],
+	NSW:[[-32.8311374606271,147.330073741546],6],
+	QLD:[[-19.1595372711075,145.775606440277],5],
+	VIC:[[-36.5699080480897,145.46918495523],7],
+	// TAS:[[-41.4674729507007,146.160857536625],7],
+	TAS:[[-42.0674729507007,146.160857536625],8],
+	// SA:[[-32.0294763311597,135.00215567445],6],
+	SA:[[-34.869060,139.818889],8],
+	WA:[[-24.4121553277572,120.961493494198],4],
+	NT:[[-18.4822523089486,133.500846381176],5],
+	ACT:[[-35.5224600766106,149.081044119544],9],
+}
+
+
+
+/*functions*/
 const numberWithCommas = (x)=>{
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -36,7 +70,7 @@ const addStorages = async()=>{
 		let surface_area_m2 = attr['surface_area_m2']
 		let system_type = attr['system_type']
 		let awra_drainage_division_name = attr['awra_drainage_division_name']
-		let state_name = attr['state_name'];console.log(state_name)
+		let state_name = attr['state_name']//;console.log(state_name)
 		let river_name = attr['river_name']
 		let year_completion = attr['year_completion']
 		let data_owner = attr['data_owner']
@@ -102,7 +136,23 @@ const addStorages = async()=>{
 		let geo = i['geometry']
 		let lat = geo['y']
 		let lon = geo['x']
-		let marker = L.marker([lat,lon]).bindPopup(info).addTo(storagesMap)
+
+		let icon = new L.Icon.Default();
+		icon.options.shadowSize = [0,0];
+
+		let marker = L.marker([lat,lon],{icon : icon}).bindPopup(info).addTo(storagesMap)
+
+		switch(state_name){
+			case 'New South Wales and Victoria': $(marker._icon).addClass('NSW VIC');break;
+			case 'Australian Capital Territory': $(marker._icon).addClass('ACT');break;
+			case 'New South Wales': $(marker._icon).addClass('NSW');break;
+			case 'Northern Territory': $(marker._icon).addClass('NT');break;
+			case 'Queensland': $(marker._icon).addClass('QLD');break;
+			case 'South Australia': $(marker._icon).addClass('SA');break;
+			case 'Tasmania': $(marker._icon).addClass('TAS');break;
+			case 'Victoria': $(marker._icon).addClass('VIC');break;
+			case 'Western Australia': $(marker._icon).addClass('WA');break;
+		}
 	}
 }
 
@@ -151,7 +201,22 @@ const getCSV = async(n)=>{
 
 getCSV(0)
 
+const stateSelect = (e)=>{
+	let v = e.target.value
+	selectedRegion = v
 
+	$(`.leaflet-marker-icon`).show()
+	if(v != 'AU'){
+		$(`.leaflet-marker-icon:not(.${v})`).hide()
+	}
+	storagesMap.setView(state_centre[v][0],state_centre[v][1]).closePopup()
+	$(e.target).addClass('selected')
+}
+
+
+
+/*bindings*/
+$('#stateSelect').change(stateSelect)
 
 // var map = L.map('map').setView({lon: 0, lat: 0}, 2);
 
