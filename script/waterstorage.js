@@ -55,7 +55,7 @@ const numberWithCommas = (x)=>{
 
 const addStorages = async()=>{
 
-	console.log(storageLocations)
+	// console.log(storageLocations)
 	let features = storageLocations['features']
 
 	for(let i of features){
@@ -194,7 +194,7 @@ const getCSV = async(n)=>{
 	if(n < states.length - 1){
 		getCSV(n + 1)
 	}else{
-		console.log(levels)
+		// console.log(levels)
 		getStorageLocations();
 	}
 }
@@ -209,7 +209,8 @@ const stateSelect = (e)=>{
 	if(v != 'AU'){
 		$(`.leaflet-marker-icon:not(.${v})`).hide()
 	}
-	storagesMap.setView(state_centre[v][0],state_centre[v][1]).closePopup()
+	// storagesMap.setView(state_centre[v][0],state_centre[v][1]).closePopup()
+	storagesMap.flyTo(state_centre[v][0],state_centre[v][1]).closePopup()
 	$(e.target).addClass('selected')
 }
 
