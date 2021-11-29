@@ -1,5 +1,6 @@
 /*set up map*/
 const storagesMap = L.map('storagesMap').setView([-25.2744, 133.7751], 4);
+storagesMap.options.minZoom = 4
 const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 const tiles = L.tileLayer(
 	'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -50,7 +51,7 @@ const state_centre = {//W,S,E,N
 
 /*functions*/
 const numberWithCommas = (x)=>{
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 const addStorages = async()=>{
@@ -141,6 +142,14 @@ const addStorages = async()=>{
 		icon.options.shadowSize = [0,0];
 
 		let marker = L.marker([lat,lon],{icon : icon}).bindPopup(info).addTo(storagesMap)
+
+		marker.getPopup().on('remove',()=>{
+			// if(storagesMap.getZoom() <= state_centre[selectedRegion][1]){
+			// 	storagesMap.flyTo(state_centre[selectedRegion][0],state_centre[selectedRegion][1])
+			// }else if(storagesMap.getZoom() == state_centre[selectedRegion][1]){
+			// 	storagesMap.panTo(state_centre[selectedRegion][0])
+			// }
+		});
 
 		switch(state_name){
 			case 'New South Wales and Victoria': $(marker._icon).addClass('NSW VIC');break;
