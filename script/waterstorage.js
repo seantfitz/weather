@@ -98,23 +98,23 @@ const addStorages = async()=>{
 			<br>
 			${state_name}
 			<hr>
-			Accessible Capacity: ${numberWithCommas(accessible_capacity_ml)} ML
+			Accessible Capacity: <b>${numberWithCommas(accessible_capacity_ml)} ML</b>
 			<br>
-			Current Volume: ${current_volume} ML
+			Current Volume: <b>${current_volume} ML</b>
 			<br>
-			Current percentage full: ${percentage} %
+			Current percentage full: <b>${percentage} %</b>
 			<br>
-			Observed: ${days[day]} ${months[month]} ${date} ${year}
+			Observed: ${days[day]} <b>${months[month]} ${date} ${year}</b>
 			<hr>
-			Drainage division: ${awra_drainage_division_name}
+			Drainage division: <b>${awra_drainage_division_name}</b>
 			<br>
-			Data provider: ${data_provider}
+			Data provider: <b>${data_provider}</b>
 		`
 
 		if(system_type != null){
 			info += `
 				<hr>
-				System type: ${system_type}
+				System type: <b>${system_type}</b>
 			`
 
 			// if(system_type == 'Rural'){
@@ -124,7 +124,7 @@ const addStorages = async()=>{
 			if(supply_system != null){
 				info += `
 					<br>
-					Supply System: ${supply_system}
+					Supply System: <b>${supply_system}</b>
 				`
 			}
 		}
