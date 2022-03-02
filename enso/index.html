@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Southern Oscillation Index</title>
+	<!-- Link Swiper's CSS -->
+	<link rel="stylesheet"href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+	<style type="text/css">
+		:root{
+			--swiper-pagination-color: #003366;
+			--swiper-theme-color: #003366;
+		}
+		body{
+			margin: 0;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+		}
+		.swiper{
+			max-width: 580px;
+			/*max-width: 1160px;*/
+			width: 100%;
+		}
+		.swiper-wrapper{
+			height: 0px;
+			padding-bottom: 56.896551724137931%;
+		}
+		.swiper-slide{
+			height: 0px;
+			padding-bottom: 56.896551724137931%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		.neutral{
+			background-image: url(images/neutral.jpg);
+		}
+		.lanina{
+			background-image: url(images/lanina.jpg);
+		}
+		.elnino{
+			background-image: url(images/elnino.jpg);
+		}
+	</style>
+</head>
+<body>
+	<div class="swiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide neutral"></div>
+			<div class="swiper-slide lanina"></div>
+			<div class="swiper-slide elnino"></div>
+		</div>
+		<div class="swiper-pagination"></div>
+		<div class="swiper-button-next swiper-button"></div>
+		<div class="swiper-button-prev swiper-button"></div>
+	</div>
+
+	<!-- Swiper JS -->
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Initialize Swiper -->
+	<script>
+
+		var swiper = new Swiper(".swiper", {
+			spaceBetween: 20,
+			loop: true,
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: true,
+			},
+			pagination: {
+				el: ".swiper-pagination",
+				// dynamicBullets: true,
+				clickable: true,
+			},
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			},
+		});
+	</script>
+</body>
+</html>
